@@ -1,0 +1,163 @@
+﻿
+@model clinicmanagement.ViewModel.ClinicViewModel
+
+@{
+    ViewData["Title"] = "Clinic System";
+}
+
+<style>
+   
+    .spaced-cell {
+        padding-left: 10px;
+    
+    .btn-spacing {
+        margin-right: 10px;
+    }
+
+</style>
+
+<h1>Welcome to Clinics India</h1>
+<form asp-action="Submit" method="post">
+
+    <h2>PATIENTS</h2>
+    <a asp-action="Create" asp-controller="Patientss" class="btn btn-success">Create New</a>
+    <div class="table-separator">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Patient.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Patient.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Patient.Gender)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Patients)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+
+
+
+
+                        <td>
+                             
+                            <a asp-action="Edit" asp-controller="Patients" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> 
+                            <a asp-action="Details" asp-controller="Patients" asp-route-id="@item.Id" class="btn btn-info">Details</a> 
+                            <a asp-action="Delete" asp-controller="Patients" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+   @* <p>
+        <a asp-action="CREATE">Create New Patient</a>
+    </p>*@
+
+    <h2>DOCTORS</h2>
+    <a asp-action="Create" asp-controller="Doctors" class="btn btn-success">Create New</a>
+
+    <div class="table-separator">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doctors[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doctors[0].Specialisation)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Doctors)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Specialisation)
+                        </td>
+                        <td>
+                            
+                            <a asp-action="Edit" asp-controller="Doctors" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> 
+                            <a asp-action="Details" asp-controller="Doctors" asp-route-id="@item.Id" class=" btn btn-info">Details</a> 
+                            <a asp-action="Delete" asp-controller="Doctors" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+   
+
+    <h2>APPOINTMENTS</h2>
+    <a asp-action="Create" asp-controller="Appointments" class="btn btn-success">Create New</a>
+    <div class="table-separator">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Patients[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Doctors[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Appointments[0].AppointmentDateTime)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Appointments)
+                {
+                    <tr>
+                        <td >
+                            
+                            @Html.DisplayFor(modelItem => item.Patient.Name)
+                        </td>
+                        <td >
+                            
+                            @Html.DisplayFor(modelItem => item.Doctor.Name)
+                        </td>
+                        <td >
+                            >
+                            @Html.DisplayFor(modelItem => item.AppointmentDateTime)
+                        </td>
+                        <td>
+
+                            
+                            <a asp-action="Edit" asp-controller="Appointments" asp-route-id="@item.Id" class="btn btn-primary btn-spacing">Edit</a> 
+                            <a asp-action="Details" asp-controller="Appointments" asp-route-id="@item.Id" class="btn btn-info btn-spacing" >Details</a> 
+                            <a asp-action="Delete" asp-controller="Appointments" asp-route-id="@item.Id" class="btn btn-danger btn-spacing">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+   
+    <button type="submit" asp-action="Submit" asp-controller="Patients" >Submit</button>
+</form>

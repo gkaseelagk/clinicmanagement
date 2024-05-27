@@ -1,0 +1,63 @@
+﻿@model clinicmanagement.Models.Appointment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .custom-spacing {
+        padding-left: 10px;
+        
+        /* Add space between rows */
+    }
+
+    .label-spacing {
+        margin-right: 20px; /* Adjust this value as needed */
+    }
+
+    .value-spacing {
+        margin-left: 20px; /* Adjust this value to increase/decrease the spacing */
+    }
+    .spaced-cell {
+        padding-left: 10px;
+        custom-spacing dt {
+            margin-bottom: 20px; /* Space between dt and dd */
+        }
+
+        .custom-spacing dd {
+            margin-bottom: 20px; /* Space between consecutive dd elements */
+            border-bottom: 1px solid #ddd; /* Separator line */
+            padding-bottom: 20px; /* Space between text and separator */
+        }
+</style>
+<h1>Details</h1>
+
+<div>
+    <h4>Appointment</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-8 " 
+            >
+            @Html.DisplayNameFor(model => model.Patient)
+        </dt>
+        <dd class = "col-sm-4  ">
+            @Html.DisplayFor(model => model.Patient.Name)
+        </dd>
+        <dt class = "col-sm-8 ">
+            @Html.DisplayNameFor(model => model.Doctor)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Doctor.Name)
+        </dd>
+        <dt class = "col-sm-8 ">
+            @Html.DisplayNameFor(model => model.AppointmentDateTime)
+        </dt>
+        <dd class = "col-sm-4 ">
+            @Html.DisplayFor(model => model.AppointmentDateTime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

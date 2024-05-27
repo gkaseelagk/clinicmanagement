@@ -1,0 +1,29 @@
+﻿@model clinicmanagement.Models.Doctor
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-8">
+            @Html.DisplayNameFor(model => model.Specialisation)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Specialisation)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
